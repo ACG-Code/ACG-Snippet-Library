@@ -1,0 +1,15 @@
+{
+	"snippetId": "Metadata_Framework",
+	"name": "Insert Metadata Framework",
+	"description": "Insert Metadata Framework",
+	"auxiliaryVariables": [],
+	"variables": [],
+	"script": [
+		"IF(nMetaHdr = 0);",
+		"\tExecuteProcess(cLogProc, 'pFlag', 'MSG', 'pProc', cProc, 'pMSG', 'Beginning Metadata');",
+		"\tnMetaHdr = 1;",
+		"ENDIF;",
+		"  ",
+		"nMeta = nMeta + 1;"
+		]
+}

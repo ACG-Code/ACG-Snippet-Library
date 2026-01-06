@@ -1,0 +1,15 @@
+{
+	"snippetId": "Data_Framework",
+	"name": "Insert Data Framework",
+	"description": "Insert Data Framework",
+	"auxiliaryVariables": [],
+	"variables": [],
+	"script": [
+		"IF(nDataHdr = 0);",
+		"\tExecuteProcess(cLogProc, 'pFlag', 'MSG', 'pProc', cProc, 'pMSG', 'Beginning Data');",
+		"\tnDataHdr = 1;",
+		"ENDIF;",
+		"  ",
+		"nData = nData + 1;"
+		]
+}

@@ -1,0 +1,51 @@
+{
+	"snippetId": "Prolog_Framework",
+	"name": "Insert Prolog Framework",
+	"description": "Insert Prolog Framework",
+	"auxiliaryVariables": [],
+	"variables": [
+	{
+		"variableName": "vProcess",
+		"description": "Name of Process",
+		"valueDefinition": {
+			"type": "STRING",
+			"defaultVal": null
+		}
+	},
+	{
+		"variableName": "vPurpose",
+		"description": "Purpose of Process",
+		"valueDefinition":{
+			"type": "STRING",
+			"defaultVal": null
+		}
+	},
+	{
+		"variableName": "vCreated",
+		"description": "Process Creation",
+		"valueDefinition":{
+			"type": "STRING",
+			"defaultVal": null
+		}
+	},
+	{
+		"variableName": "vUpdated",
+		"description": "Last Update Date",
+		"valueDefinition":{
+			"type": "STRING",
+			"defaultVal": null
+		}
+	}
+	],
+	"script": [
+		"#Region ############################################# HEADER #############################################",
+		"# Process: vValue:vProcess",
+		"# Purpose: vValue:vPurpose",
+		"# Date Created: vValue:vCreated (ACGI)",
+		"# Last Update: vValue:vUpdated",
+		"# Notes: ",
+		"#     vValue:vCreated (ACGI) - Initial Process Creation",
+		"#EndRegion",
+		" "	
+		]
+}

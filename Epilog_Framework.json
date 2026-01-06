@@ -1,0 +1,13 @@
+{
+	"snippetId": "Epilog_Framework",
+	"name": "Insert Epilog Framework",
+	"description": "Insert Epilog Framework",
+	"auxiliaryVariables": [],
+	"variables": [],
+	"script": [
+		"ExecuteProcess(cLogProc, 'pFlag', 'MSG', 'pProc', cProc, 'pMSG', 'Beginning Epilog');",
+		"  ",
+		"sStatus = IF(nError = 1, 'ERROR', 'SUCCESS');",
+		"ExecuteProcess(cLogProc, 'pFlag', 'END', 'pProc', cProc, 'pMSG', sStatus);"
+		]
+}

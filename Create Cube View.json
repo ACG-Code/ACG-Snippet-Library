@@ -1,0 +1,93 @@
+{
+	"snippetId": "CubeViewLoop",
+	"name": "Insert Cube Creation Loop",
+	"description": "Insert Cube Creation Loop",
+	"auxiliaryVariables": ["vView", "vCube"],
+	"variables": [
+		{
+			"variableName": "vCube",
+			"description": "Cube Name",
+			"valueDefinition": {
+				"type": "STRING",
+				"defaultVal": null
+			}
+		},
+		{
+			"variableName": "vView",
+			"description": "View Name",
+			"valueDefinition": {
+				"type": "STRING",
+				"defaultVal": null
+			}
+		},
+		{
+			"variableName": "vTemp",
+			"description": "Create as Temporary",
+			"valueDefinition": {
+				"type": "STRING",
+				"defaultVal": null
+			}
+		},
+		{
+			"variableName": "vZero",
+			"description": "Skip Zeroes",
+			"valueDefinition": {
+				"type": "NUMERIC",
+				"defaultVal": 1
+			}
+		},
+		{
+			"variableName": "vConsol",
+			"description": "Skip Consolidated Values",
+			"valueDefinition": {
+				"type": "NUMERIC",
+				"defaultVal": 1
+			}
+		},
+		{
+			"variableName": "vRules",
+			"description": "Skip Rule Derived Values",
+			"valueDefinition": {
+				"type": "NUMERIC",
+				"defaultVal": 1
+			}
+		},
+		{
+			"variableName": "vType",
+			"description": "Type of view",
+			"valueDefinition": {
+				"type": "STRING",
+				"defaultVal": null
+			}
+		}
+	],
+	"script": [
+		"#Region --------------- vValue:vType ---------------",
+		"IF(ViewExists(vValue:vCube, vValue:vView) = 1);",
+		"\tViewDestroy(vValue:vCube, vValue:vView);",
+		"ENDIF;",
+		"ViewCreate(vValue:vCube, vValue:vView, vValue:vTemp);",
+		"ViewExtractSkipZeroesSet(vValue:vCube, vValue:vView, vValue:vZero);",
+		"ViewExtractSkipCalcsSet(vValue:vCube, vValue:vView, vValue:vConsol);",
+		"ViewExtractSkipRuleValuesSet(vValue:vCube, vValue:vView, vValue:vRules);",
+		" ",
+		"nLoop = 1;",
+		"nMax = CubeDimensionCountGet(vValue:vCube);",
+		" ",
+		"WHILE(nLoop <= nMax);",
+		"\tsDim = TABDIM(vValue:vCube, nLoop);",
+		" ",
+		"\tIF(SubsetExists(sDim, vValue:vView) = 1);",
+		"\t\tSubsetDeleteAllElements(sDim, vValue:vView);",
+		"\tELSE;",
+		"\t\tSubsetCreate(sDim, vValue:vView, vValue:vTemp);",
+		"ENDIF;",
+		"\tViewSubsetAssign(vValue:vCube, vValue:vView, sDim, vValue:vView);",
+		" ",
+		"\t# Insert DIM Logic",
+		" ",
+		"\tnLoop = nLoop + 1;",
+		"END;",
+		"#EndRegion"
+	]
+}

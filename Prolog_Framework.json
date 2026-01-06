@@ -1,0 +1,82 @@
+{
+	"snippetId": "Prolog_Framework",
+	"name": "Insert Prolog Framework",
+	"description": "Insert Prolog Framework",
+	"auxiliaryVariables": [],
+	"variables": [
+	{
+		"variableName": "vProcess",
+		"description": "Name of Process",
+		"valueDefinition": {
+			"type": "STRING",
+			"defaultVal": null
+		}
+	},
+	{
+		"variableName": "vPurpose",
+		"description": "Purpose of Process",
+		"valueDefinition":{
+			"type": "STRING",
+			"defaultVal": null
+		}
+	},
+	{
+		"variableName": "vCreated",
+		"description": "Process Creation",
+		"valueDefinition":{
+			"type": "STRING",
+			"defaultVal": null
+		}
+	},
+	{
+		"variableName": "vUpdated",
+		"description": "Last Update Date",
+		"valueDefinition":{
+			"type": "STRING",
+			"defaultVal": null
+		}
+	}
+	],
+	"script": [
+		"#Region ############################################# HEADER #############################################",
+		"# Process: vValue:vProcess",
+		"# Purpose: vValue:vPurpose",
+		"# Date Created: vValue:vCreated (ACGI)",
+		"# Last Update: vValue:vUpdated",
+		"# Notes: ",
+		"#     vValue:vCreated (ACGI) - Initial Process Creation",
+		"#EndRegion",
+		" ",
+		"#Region --------------- Constants ---------------",
+		"cLogProc = 'PLOG';",
+		"cProc = GetProcessName;",
+		"cUser = NumberToString(DIMIX('}Clients', TM1USER));",
+		"cTimestamp = TIMST(now, '\\Y\\m\\d\\h\\i\\s');",
+		"cRandomInt = NumberToString(INT(RAND() * 1005));",
+		"cView = '%cProc%.%cUser%.%cTimestamp%.%cRandomInt%';",
+		"cTemp = 1;",
+		"#EndRegion",
+		" ",
+		"#Region --------------- Initialize Logging ---------------",
+		"ExecuteProcess(cLogProc, 'pFlag', 'INIT', 'pProc', cProc);",
+		"#EndRegion",
+		" ",
+		"#Region --------------- Error Handling ---------------",
+		"nError = 0;",
+		" ",
+		"IF(nError = 1);",
+		"\tExecuteProcess(cLogProc, 'pFlag', 'MSG', 'pProc', cProc, 'pMSG', 'Critical errors, exiting');",
+		"\tProcessBreak;",
+		"ENDIF;",
+		"#EndRegion",
+		" ",
+		"#Region --------------- Variables ---------------",
+		"sView = EXPAND(cView);",
+		"nMetaHdr = 0;",
+		"nMeta = 0;",
+		"nDataHdr = 0;",
+		"nData = 0;",
+		"#EndRegion",
+		" "		
+		]
+}
